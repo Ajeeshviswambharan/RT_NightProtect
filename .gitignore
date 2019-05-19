@@ -1,0 +1,17 @@
+*.exe
+*.vs
+*.log
+*.ilk
+*.pdb
+OS_based/Debug/OS_based.log
+OS_based/Debug/OS_based.tlog/CL.command.1.tlog
+OS_based/Debug/OS_based.tlog/CL.read.1.tlog
+OS_based/Debug/OS_based.tlog/CL.write.1.tlog
+OS_based/Debug/OS_based.tlog/OS_based.lastbuildstate
+OS_based/Debug/OS_based.tlog/link.command.1.tlog
+OS_based/Debug/OS_based.tlog/link.read.1.tlog
+OS_based/Debug/OS_based.tlog/link.write.1.tlog
+OS_based/Debug/main.obj
+OS_based/Debug/main1.obj
+OS_based/Debug/vc141.idb
+OS_based/Debug/vc141.pdb
