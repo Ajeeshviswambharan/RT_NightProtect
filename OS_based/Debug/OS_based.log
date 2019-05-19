@@ -1,6 +1,0 @@
-﻿  main.c
-d:\rt_nightrobot\rt_nightprotect\os_based\main.c(11): warning C4013: 'getch' undefined; assuming extern returning int
-  main1.c
-d:\rt_nightrobot\rt_nightprotect\os_based\main1.c(7): warning C4013: 'printf' undefined; assuming extern returning int
-  Generating Code...
-  OS_based.vcxproj -> D:\RT_NightRobot\RT_NightProtect\OS_based\Debug\OS_based.exe
