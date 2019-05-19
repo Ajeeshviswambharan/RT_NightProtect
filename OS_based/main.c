@@ -8,6 +8,7 @@ void main()
 
 	var = 1;
 		printf("Main Program!!!!!!\n");
+		printf("Main Program_Work_started!!!!!!!\n");
 		getch();
 	
 }
