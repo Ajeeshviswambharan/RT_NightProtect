@@ -1,4 +1,4 @@
-extern D_Detils(Day_B_Day daily);
+//extern D_Detils(Day_B_Day daily);
 
 typedef struct
 {
@@ -6,4 +6,6 @@ typedef struct
     float expense; 
 
 }Intial_Detils;
-extern Intial_Detils Day_B_Day;
+Intial_Detils Day_B_Day;
+
+extern D_Daycount(Intial_Detils* today);

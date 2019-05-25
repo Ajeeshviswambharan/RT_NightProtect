@@ -13,3 +13,10 @@ os_shedule()
 	printf("OS_schedule!!!!!\n");
 	return EOK;
 }
+
+D_Daycount(day)
+
+{
+	printf("function call!!!!!\n");
+	return EOK;
+}
