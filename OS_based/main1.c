@@ -1,4 +1,5 @@
 #include"main.h"
+#include"Rte_Types.h"
 int var;
 
 os_init()
@@ -14,9 +15,10 @@ os_shedule()
 	return EOK;
 }
 
-D_Daycount(day)
+D_Detils(Intial_Detils* Day1)
 
 {
-	printf("function call!!!!!\n");
+	printf("!!!!!!Daily Vages!!!!!\n");
+	printf("Ent!!!!!\n");
 	return EOK;
 }

@@ -1,18 +1,19 @@
 #include"main.h"
 #include"Rte_Types.h"
 #include<stdio.h>
+Intial_Detils daily;
 
 void main()
 {
-//	 Day;
+
 	os_init();
 	os_shedule();
- //    D_Detils(Intial_Detils daily);
+
 	
 	var = 1;
 		printf("Main Program!!!!!!\n");
 		printf("Main Program_Work_started!!!!!!!\n");
-		D_Daycount(&Day_B_Day);
+		D_Detils(&daily);
 		getch();
 	
 }
