@@ -3,7 +3,7 @@
 *.log
 *.ilk
 *.pdb
-*bin
+*.bin
 *.ipch
 OS_based/Debug/OS_based.log
 OS_based/Debug/OS_based.tlog/CL.command.1.tlog
