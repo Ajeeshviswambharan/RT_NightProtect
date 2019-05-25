@@ -1,5 +1,7 @@
 #include"main.h"
 #include"Rte_Types.h"
+#include<math.h>
+#include<stdio.h>
 int var;
 
 os_init()
@@ -19,6 +21,9 @@ D_Detils(Intial_Detils* Day1)
 
 {
 	printf("!!!!!!Daily Vages!!!!!\n");
-	printf("Ent!!!!!\n");
+	printf("---------Enter the date----\n");
+	scanf_s("%d", &Day1->date);
 	return EOK;
+
+
 }
