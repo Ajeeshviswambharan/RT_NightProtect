@@ -3,6 +3,7 @@
 
 typedef struct 
 {
+	char answer;
     int date;
     int number;
     float expense; 
