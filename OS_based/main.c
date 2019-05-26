@@ -5,6 +5,7 @@
 long int bankbalace;
 #define BANKAMOUNT 100000
 Intial_Detils daily1;
+float total_Vages;
 
 void main()
 {
@@ -22,6 +23,8 @@ void main()
 		if ((daily1.answer) == 'y')
 		{
 			D_Detils(&daily1);
+			total_Vages = sum_vages(&daily1);
+			printf("----TOTAL EXPENSE=%f\n", daily1.total);
 		}
 //		else
 		{ }

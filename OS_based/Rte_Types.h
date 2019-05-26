@@ -1,4 +1,4 @@
-
+extern float total_Vages;
 
 
 typedef struct 
@@ -6,8 +6,10 @@ typedef struct
 	char answer;
     int date;
     int number;
-    float expense; 
+    float amount[10];
+	float total;
 
 }Intial_Detils;
 
-extern D_Detils(Intial_Detils* Day_Day);
+extern D_Detils(Intial_Detils* Day1);
+extern float sum_vages(Intial_Detils* Daytoday);
