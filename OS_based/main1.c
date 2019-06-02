@@ -26,15 +26,11 @@ D_Detils(Intial_Detils* Day1)
 	printf("---------Enter the number of purchace----\n");
 	scanf_s("%d", &Day1->number);
 	printf("----Number of Purchase=%d\n", Day1->number);
-	
-	
-	
-	
 	return EOK;
 
 
 }
-sum_vages(Intial_Detils* Daytoday)
+float sum_vages(Intial_Detils* Daytoday)
 {
 	for (int i = 1;(i <=(Daytoday->number));i++)
 	{
@@ -42,13 +38,12 @@ sum_vages(Intial_Detils* Daytoday)
 	scanf_s("%f",&Daytoday->amount[i]);
 	Daytoday->total = (Daytoday->total) + (Daytoday->amount[i]);
 	}
-
-	return (Daytoday->total);
+	return Daytoday->total;
 }
 
 Date_verify(int* Ddate_v)
 {
-	int da, mon, yr;
+	
 	printf("----Date entered=%d\n", *Ddate_v);
 	printf("----intsize=%d\n", sizeof(int));
 	int ab = *Ddate_v;
@@ -74,3 +69,35 @@ Date_verify(int* Ddate_v)
 
 	}
 }
+bank_Details(Intial_Detils* bank)
+{
+	printf("----ENTER THE AMOUNT WITHDROWN----\n");
+	scanf_s("%f", &(bank->widrow_bank_amount));
+	bank->current_bank_amount = (bank->current_bank_amount) - (bank->widrow_bank_amount);
+	
+}
+
+compare_amount(long float* current_bank_amount1)
+{
+	int condition;
+	long float amount1 = *current_bank_amount1;
+	condition = (amount1 < BANKAMOUNT) ? 1 : 2;
+	switch (condition)
+	{
+	case 1:
+			printf("&&&&&&&&&&&WARNING&&&&&&&&&&&&&&&&&\n");
+			printf("____________BALANCE LOW_____________\n");
+			printf("&&&&&&&&&&&WARNING&&&&&&&&&&&&&&&&&\n");
+		break;
+	case 2:
+			printf("____________SUFFICIENT BALANCE_____________\n");
+		break;
+
+	default:
+		break;
+	}
+		
+
+}
+
+
