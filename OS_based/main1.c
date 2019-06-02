@@ -3,7 +3,7 @@
 #include<math.h>
 #include<stdio.h>
 int var=2;
-
+_Bool flag_date, flag_month, flag_year;
 os_init()
 {
 //	var = 1;
@@ -22,9 +22,7 @@ D_Detils(Intial_Detils* Day1)
 
 {
 	printf("!!!!!!Daily Vages!!!!!\n");
-	printf("---------Enter the date----\n");
-	scanf_s("%d", &Day1->date);
-	printf("----Date entered=%d\n",Day1->date);
+	
 	printf("---------Enter the number of purchace----\n");
 	scanf_s("%d", &Day1->number);
 	printf("----Number of Purchase=%d\n", Day1->number);
@@ -46,4 +44,33 @@ sum_vages(Intial_Detils* Daytoday)
 	}
 
 	return (Daytoday->total);
+}
+
+Date_verify(int* Ddate_v)
+{
+	int da, mon, yr;
+	printf("----Date entered=%d\n", *Ddate_v);
+	printf("----intsize=%d\n", sizeof(int));
+	int ab = *Ddate_v;
+	da = ab / 1000000;
+	mon = ab / 10000;
+	mon = mon%100;
+	yr = ab % 10000;
+	if (da == 0 || da >= 32)
+	{
+		printf("*******Entered a Wrong Day******\n");
+		flag_date = 1;
+	}
+	if (mon == 0 || mon >= 13)
+	{
+		printf("----month =%d\n", mon);
+		printf("*******Entered a Wrong Month******\n");
+		flag_month = 1;
+	}
+	if (yr != CURRENTYEAR)
+	{
+		printf("*******Entered a Wrong Year******\n");
+		flag_year=1;
+
+	}
 }
