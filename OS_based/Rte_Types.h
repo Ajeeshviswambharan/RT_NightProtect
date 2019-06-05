@@ -1,7 +1,10 @@
+#include <stdio.h>
+#include <stdlib.h>
 #define BANKAMOUNT 50000
 #define CURRENTYEAR 2019
 extern float total_Vages;
 extern int da, mon, yr;
+//extern FILE *fp;
 
 typedef struct 
 {
