@@ -6,7 +6,8 @@
 #include<string.h>
 #include <stdlib.h>
 
-int da, mon, yr;
+extern _Bool terminate;
+
 long int bankbalace;
 int choice_get;
 
@@ -37,12 +38,25 @@ void main()
 	{
 	case 1:
 		printf(" PLEASE UPDATE WITHDROWAL AMOUNT AND DAILY BILLS\n");
+		
+		
 		date(&daily1);
+		if (terminate)
+			break;
 		withdrwal(&daily1);
-
+		D_Detils(&daily1);
+		sum_vages(&daily1);
+		updated_balance(&daily1);
 		break;
 	case 2:
 		printf(" PLEASE UPDAYE DAILY BILLS\n");
+		date(&daily1);
+		if (terminate)
+			break;
+		D_Detils(&daily1);
+		sum_vages(&daily1);
+		updated_balance(&daily1);
+
 		break;
 	case 3:
 		printf(" PLEASE UPDATE THE NEW AMOUNT CREDITED \n");
@@ -60,7 +74,7 @@ void main()
 
 
 	}
-
+	last:
 	getch();
 
 

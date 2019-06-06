@@ -22,6 +22,7 @@ typedef struct
 
 extern date(Intial_Detils* Day1);
 extern withdrwal(Intial_Detils* wdrw);
+extern updated_balance(Intial_Detils* dbase);
 extern D_Detils(Intial_Detils* Day1);
 extern float sum_vages(Intial_Detils* Daytoday);
 extern Date_verify(int* date_v);

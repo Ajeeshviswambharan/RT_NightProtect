@@ -1,3 +1,4 @@
+#define _CRT_SECURE_NO_WARNINGS
 #include"main.h"
 #include"Rte_Types.h"
 #include<math.h>
@@ -5,7 +6,10 @@
 int var=2;
 static int count;
 _Bool flag_date, flag_month, flag_year;
+_Bool terminate=0;
 FILE *fp;
+int da, mon, yr;
+extern choice_get;
 os_init()
 {
 //	var = 1;
@@ -28,7 +32,7 @@ date(Intial_Detils* Day1)
 	Date_verify(&Day1->date);
 	if (flag_date == 0 && flag_month == 0 && flag_year == 0)
 	{
-		fprintf(fp, "\n%d", Day1->date);
+		
 	}
 	else
 	{
@@ -39,6 +43,7 @@ date(Intial_Detils* Day1)
 		if (count > 1)
 		{
 			printf("@@@@@@@@@@ WRONG DATE ENTERED 2 TIMES...PLEASE HIT ENTER TO TERMINATE @@@@@@@@\n");
+			terminate=1;
 			getch();
 		}
 		else
@@ -79,8 +84,7 @@ withdrwal(Intial_Detils* wdrw)
 		bank_Details(wdrw);
 		compare_amount(&wdrw->current_bank_amount);
 		printf("Current Bank Balance=%f\n", (wdrw->current_bank_amount));
-		fprintf(fp, "%F", (wdrw->current_bank_amount));
-		fclose(fp);
+		
 	
 	
 }
@@ -88,6 +92,7 @@ bank_Details(Intial_Detils* bank)
 {
 	printf("----ENTER THE AMOUNT WITHDROWN----\n");
 	scanf_s("%f", &(bank->widrow_bank_amount));
+
 	bank->current_bank_amount = (bank->current_bank_amount) - (bank->widrow_bank_amount);
 
 }
@@ -118,8 +123,6 @@ compare_amount(long float* current_bank_amount1)
 D_Detils(Intial_Detils* Day1)
 
 {
-	printf("!!!!!!Daily Vages!!!!!\n");
-	
 	printf("---------Enter the number of purchace----\n");
 	scanf_s("%d", &Day1->number);
 	printf("----Number of Purchase=%d\n", Day1->number);
@@ -129,16 +132,32 @@ D_Detils(Intial_Detils* Day1)
 }
 float sum_vages(Intial_Detils* Daytoday)
 {
+	
 	for (int i = 1;(i <=(Daytoday->number));i++)
 	{
 	printf("----Enter the %d purchase amount---\n", i);
 	scanf_s("%f",&Daytoday->amount[i]);
 	Daytoday->total = (Daytoday->total) + (Daytoday->amount[i]);
 	}
+	Daytoday->widrow_bank_amount = (Daytoday->widrow_bank_amount) - (Daytoday->total);
+	printf("----TOTAL EXPENSE FOR THE  %d_%d_%d DATE =%f\n", da, mon, yr, Daytoday->total);
 	return Daytoday->total;
 }
 
 
+updated_balance(Intial_Detils* dbase)
+{
+	printf("\n");
+	printf("\n");
+	printf("____________________________________________________________________________________________________\n");
+	printf("Current Bank Balance=%f\n", (dbase->current_bank_amount));
+	printf("Updated Widrow Balance=%f\n", (dbase->widrow_bank_amount));
+	printf("____________________________________________________________________________________________________\n");
+	printf("\n");
+	printf("\n");
+	fprintf(fp, "\n%d",(dbase->date));
+	fprintf(fp, "%F", (dbase->current_bank_amount));
+	fprintf(fp, "%F", (dbase->widrow_bank_amount));
+	fclose(fp);
 
-
-
+}
