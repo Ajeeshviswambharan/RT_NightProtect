@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #define BANKAMOUNT 50000
 #define CURRENTYEAR 2019
+
 extern float total_Vages;
 extern int da, mon, yr;
 //extern FILE *fp;
@@ -19,6 +20,8 @@ typedef struct
 
 }Intial_Detils;
 
+extern date(Intial_Detils* Day1);
+extern withdrwal(Intial_Detils* wdrw);
 extern D_Detils(Intial_Detils* Day1);
 extern float sum_vages(Intial_Detils* Daytoday);
 extern Date_verify(int* date_v);
