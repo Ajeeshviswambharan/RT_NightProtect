@@ -8,7 +8,7 @@
 
 extern _Bool terminate;
 
-long int bankbalace;
+long bankbalace;
 int choice_get;
 
 Intial_Detils daily1;
@@ -20,8 +20,9 @@ void main()
 {
 	//	os_init();
 	//	os_shedule();
-	daily1.current_bank_amount = 165000.50;
+	daily1.current_bank_amount = 165000;
 	var = 1;
+	database_read(&daily1);
 	fp = fopen("D:\\RT_NightProtect\\database.txt", "a+");
 	printf("_______________________DAILY WAGES_________________\n");
 	printf("PLEASE ENTER YOUR CHIICE \n");

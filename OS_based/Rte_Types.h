@@ -12,14 +12,14 @@ typedef struct
 	char answer;
     int date;
     int number;
-    float amount[10];
-	float total;
-	long float current_bank_amount;
-	float widrow_bank_amount;
-	float final_b;
+    long amount[10];
+	long total;
+	long  current_bank_amount;
+	long widrow_bank_amount;
+	long final_b;
 
 }Intial_Detils;
-
+extern database_read(Intial_Detils* dbase);
 extern date(Intial_Detils* Day1);
 extern withdrwal(Intial_Detils* wdrw);
 extern updated_balance(Intial_Detils* dbase);

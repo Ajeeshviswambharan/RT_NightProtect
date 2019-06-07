@@ -22,6 +22,63 @@ os_shedule()
 	printf("OS_schedule!!!!!\n");
 	return EOK;
 }
+database_read(Intial_Detils* dbase)
+{
+	char line[81], rbbalancea[7], withdrowa[7];
+	long rdate=0,rbbalance=0,rwithdrw=0;
+	int e_flag=0,i,j=0,k=0;
+	fp = fopen("D:\\RT_NightProtect\\database.txt", "a+");
+	if (fp != NULL)
+	{
+		while (!feof(fp))
+		{
+			fgets(line, 81, fp);
+			
+		}
+		printf("READ1=%s\n", line);
+		for (i = 0;line[i] != 'E';i++)
+		{
+				rdate = atol(line);
+				e_flag = 1;
+				printf("Last date=%li\n", rdate);
+		}
+		i++;
+		
+		for (;line[i] != 'E';i++)
+		{
+			if (e_flag == 1)
+			{
+				rbbalancea[j] = line[i];
+				//printf("Last bank balance char=%s\n", rbbalancea);
+				rbbalance = atol(rbbalancea);
+				printf("Last bank balance=%li\n", rbbalance);
+				j++;
+			}
+		}
+		i++;
+		for (i;line[i] != 'E';i++)
+			{
+
+				withdrowa[k] = line[i];
+				rbbalance = atol(withdrowa);
+				printf("Last withdrow balance=%li\n", rbbalance);
+				k++;
+			}
+		
+	}
+
+
+	
+		
+		
+		
+		
+		//(dbase->current_bank_amount) = (double)line;
+	
+	else
+		exit(0);
+
+}
 date(Intial_Detils* Day1)
 {
 	printf("---------Enter the date in DDMMYYYY format----\n");
@@ -80,10 +137,10 @@ Date_verify(int* Ddate_v)
 
 withdrwal(Intial_Detils* wdrw)
 {
-		printf("Current Bank Balance=%f\n", (wdrw->current_bank_amount));
+		printf("Current Bank Balance=%li\n", (wdrw->current_bank_amount));
 		bank_Details(wdrw);
 		compare_amount(&wdrw->current_bank_amount);
-		printf("Current Bank Balance=%f\n", (wdrw->current_bank_amount));
+		printf("Current Bank Balance=%li\n", (wdrw->current_bank_amount));
 		
 	
 	
@@ -91,15 +148,15 @@ withdrwal(Intial_Detils* wdrw)
 bank_Details(Intial_Detils* bank)
 {
 	printf("----ENTER THE AMOUNT WITHDROWN----\n");
-	scanf_s("%f", &(bank->widrow_bank_amount));
+	scanf_s("%li", &(bank->widrow_bank_amount));
 
 	bank->current_bank_amount = (bank->current_bank_amount) - (bank->widrow_bank_amount);
 
 }
-compare_amount(long float* current_bank_amount1)
+compare_amount(long * current_bank_amount1)
 {
 	int condition;
-	long float amount1 = *current_bank_amount1;
+	long amount1 = *current_bank_amount1;
 	condition = (amount1 < BANKAMOUNT) ? 1 : 2;
 	switch (condition)
 	{
@@ -136,11 +193,11 @@ float sum_vages(Intial_Detils* Daytoday)
 	for (int i = 1;(i <=(Daytoday->number));i++)
 	{
 	printf("----Enter the %d purchase amount---\n", i);
-	scanf_s("%f",&Daytoday->amount[i]);
+	scanf_s("%li",&Daytoday->amount[i]);
 	Daytoday->total = (Daytoday->total) + (Daytoday->amount[i]);
 	}
 	Daytoday->widrow_bank_amount = (Daytoday->widrow_bank_amount) - (Daytoday->total);
-	printf("----TOTAL EXPENSE FOR THE  %d_%d_%d DATE =%f\n", da, mon, yr, Daytoday->total);
+	printf("----TOTAL EXPENSE FOR THE  %d_%d_%d DATE =%li\n", da, mon, yr, Daytoday->total);
 	return Daytoday->total;
 }
 
@@ -150,14 +207,17 @@ updated_balance(Intial_Detils* dbase)
 	printf("\n");
 	printf("\n");
 	printf("____________________________________________________________________________________________________\n");
-	printf("Current Bank Balance=%f\n", (dbase->current_bank_amount));
-	printf("Updated Widrow Balance=%f\n", (dbase->widrow_bank_amount));
+	printf("Current Bank Balance=%li\n", (dbase->current_bank_amount));
+	printf("Updated Widrow Balance=%li\n", (dbase->widrow_bank_amount));
 	printf("____________________________________________________________________________________________________\n");
 	printf("\n");
 	printf("\n");
 	fprintf(fp, "\n%d",(dbase->date));
-	fprintf(fp, "%F", (dbase->current_bank_amount));
-	fprintf(fp, "%F", (dbase->widrow_bank_amount));
+	fprintf(fp, "%c",'E');
+	fprintf(fp, "%li", (dbase->current_bank_amount));
+	fprintf(fp, "%c", 'E');
+	fprintf(fp, "%li", (dbase->widrow_bank_amount));
+	fprintf(fp, "%c", 'E');
 	fclose(fp);
 
 }
