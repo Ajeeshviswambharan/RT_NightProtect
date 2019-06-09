@@ -1,4 +1,7 @@
 #define _CRT_SECURE_NO_WARNINGS
+#ifndef INTIAL
+#define INITAL 0
+#endif // !INTIAL
 #include"main.h"
 #include"Rte_Types.h"
 #include<math.h>
@@ -27,52 +30,70 @@ database_read(Intial_Detils* dbase)
 	char line[81], rbbalancea[7], withdrowa[7];
 	long rdate=0,rbbalance=0,rwithdrw=0;
 	int e_flag=0,i,j=0,k=0;
-	fp = fopen("D:\\RT_NightProtect\\database.txt", "a+");
+//	fp = fopen("D:\\RT_NightProtect\\database.txt", "a+");
 	if (fp != NULL)
 	{
 		while (!feof(fp))
 		{
 			fgets(line, 81, fp);
-			
-		}
-		printf("READ1=%s\n", line);
-		for (i = 0;line[i] != 'E';i++)
-		{
+			if (INITAL)
+			{
+				printf("READ1=%s\n", line);
+
+				if (line[0] == NULL)
+				{
+					printf("INTIAL BEBUGG\n");
+					dbase->date = 0;
+					dbase->current_bank_amount = 0;
+					dbase->widrow_bank_amount = 0;
+					fprintf(fp, "\n%d", (dbase->date));
+					fprintf(fp, "%c", 'E');
+					fprintf(fp, "%li", (dbase->current_bank_amount));
+					fprintf(fp, "%c", 'E');
+					fprintf(fp, "%li", (dbase->widrow_bank_amount));
+					fprintf(fp, "%c", 'E');
+					fclose(fp);
+				}
+			}
+		}					
+			for (i = 0;line[i] != 'E';i++)
+			{
 				rdate = atol(line);
 				e_flag = 1;
-				printf("Last date=%li\n", rdate);
-		}
-		i++;
-		
-		for (;line[i] != 'E';i++)
-		{
-			if (e_flag == 1)
-			{
-				rbbalancea[j] = line[i];
-				//printf("Last bank balance char=%s\n", rbbalancea);
-				rbbalance = atol(rbbalancea);
-				printf("Last bank balance=%li\n", rbbalance);
-				j++;
+				//printf("Last date=%li\n", rdate);
 			}
-		}
-		i++;
-		for (i;line[i] != 'E';i++)
+			i++;
+
+			for (;line[i] != 'E';i++)
+			{
+				if (e_flag == 1)
+				{
+					rbbalancea[j] = line[i];
+					//printf("Last bank balance char=%s\n", rbbalancea);
+					rbbalance = atol(rbbalancea);
+					//printf("Last bank balance=%li\n", rbbalance);
+					j++;
+				}
+			}
+			i++;
+			for (i;line[i] != 'E';i++)
 			{
 
 				withdrowa[k] = line[i];
-				rbbalance = atol(withdrowa);
-				printf("Last withdrow balance=%li\n", rbbalance);
+				rwithdrw = atol(withdrowa);
+				//printf("Last withdrow balance=%li\n", rwithdrw);
 				k++;
 			}
-		
-	}
-
-
+			dbase->date = rdate;
+			dbase->current_bank_amount = rbbalance;
+			dbase->widrow_bank_amount = rwithdrw;
+			//printf("LAST UPDATED DATE:")
+			printf("CURRENT BANK BALANCE=%li\n", dbase->current_bank_amount);
+			printf("LAST WTHDROWAL BALANCE=%li\n", dbase->widrow_bank_amount);
+			printf("   _________________________________________________\n");
 	
 		
-		
-		
-		
+	}	
 		//(dbase->current_bank_amount) = (double)line;
 	
 	else
@@ -146,11 +167,14 @@ withdrwal(Intial_Detils* wdrw)
 	
 }
 bank_Details(Intial_Detils* bank)
-{
-	printf("----ENTER THE AMOUNT WITHDROWN----\n");
-	scanf_s("%li", &(bank->widrow_bank_amount));
 
-	bank->current_bank_amount = (bank->current_bank_amount) - (bank->widrow_bank_amount);
+{
+	long withdrow;
+	printf("----ENTER THE AMOUNT WITHDROWN----\n");
+	scanf_s("%li", &(withdrow));
+
+	bank->current_bank_amount = (bank->current_bank_amount) - withdrow;
+	bank->widrow_bank_amount = (bank->widrow_bank_amount) + withdrow;
 
 }
 compare_amount(long * current_bank_amount1)
@@ -221,3 +245,29 @@ updated_balance(Intial_Detils* dbase)
 	fclose(fp);
 
 }
+bank_update(Intial_Detils* babank)
+
+{
+	long bbupdate;
+	printf("----ENTER THE BANK UPDATED AMOUNT----\n");
+	scanf_s("%li", &(bbupdate));
+
+	babank->current_bank_amount = (babank->current_bank_amount) + bbupdate;
+	printf("----BANK AMOUNT TILL DATE  %d_%d_%d  IS %li\n", da, mon, yr, babank->current_bank_amount);
+
+
+}
+
+bank_Dupdate(Intial_Detils* babank)
+
+{
+	long bdupdate;
+	printf("----ENTER THE DEBIT AMOUNT----\n");
+	scanf_s("%li", &(bdupdate));
+
+	babank->current_bank_amount = (babank->current_bank_amount) - bdupdate;
+	printf("----BANK AMOUNT TILL DATE  %d_%d_%d  IS %li\n", da, mon, yr, babank->current_bank_amount);
+
+
+}
+

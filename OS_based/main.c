@@ -1,4 +1,7 @@
 #define _CRT_SECURE_NO_WARNINGS 
+
+
+
 #include"main.h"
 #include"Rte_Types.h"
 #include<stdio.h>
@@ -20,19 +23,19 @@ void main()
 {
 	//	os_init();
 	//	os_shedule();
-	daily1.current_bank_amount = 165000;
+	//daily1.current_bank_amount = 165000;
 	var = 1;
-	database_read(&daily1);
-	fp = fopen("D:\\RT_NightProtect\\database.txt", "a+");
 	printf("_______________________DAILY WAGES_________________\n");
+	fp = fopen("D:\\RT_NightProtect\\database.txt", "a+");
+	database_read(&daily1);
 	printf("PLEASE ENTER YOUR CHIICE \n");
 	printf("   _________________________________________________\n");
 	printf(" PRESS\n");
 	printf(" 1-FOR UPDATING BANK WITHDROWAL AND DAILY BILLS\n");
 	printf(" 2-FOR UPDATING DAILY BILLS\n");
-	printf(" 3-FOR UPDATING BANK AMOUNT \n");
+	printf(" 3-FOR UPDATING BANK AMOUNT AND WIDROW AMOUNT \n");
 	printf(" 4-FOR UPDATING CREDIT CARD WITHDROWAL\n");
-	printf(" 5-FOR BANK BALANCE AND WITHDROW BALANCE\n");
+	printf(" 5-FOR DISPLAY BANK BALANCE AND WITHDROW BALANCE\n");
 	printf("   _________________________________________________\n");
 	scanf("%d", &choice_get);
 	switch (choice_get)
@@ -57,17 +60,26 @@ void main()
 		D_Detils(&daily1);
 		sum_vages(&daily1);
 		updated_balance(&daily1);
-
 		break;
 	case 3:
-		printf(" PLEASE UPDATE THE NEW AMOUNT CREDITED \n");
+		printf(" PLEASE UPDATE THE NEW AMOUNT CREDITED AND WIDROW AMOUNT \n");
+		date(&daily1);
+		if (terminate)
+			break;
+		bank_update(&daily1);
+		withdrwal(&daily1);
+		updated_balance(&daily1);
 		break;
 	case 4:
 		printf(" PLEASE UPDATE THE CREDIT CARD WITHDROWAL AMOUNT \n");
-
+		date(&daily1);
+		if (terminate)
+			break;
+		bank_Dupdate(&daily1);
+		updated_balance(&daily1);
 		break;
 	case 5:
-		printf(" BALANCE CHECK ONLY\n");
+		printf(" LAST DAY BALANCE DETAILS\n");
 		break;
 	default:
 		printf(" INVALID ENTRY\n");

@@ -29,3 +29,5 @@ extern Date_verify(int* date_v);
 extern _Bool flag_date, flag_month, flag_year;
 extern bank_Details(Intial_Detils* bank);
 extern compare_amount(long float* current_bank_amount1);
+bank_update(Intial_Detils* babank);
+bank_Dupdate(Intial_Detils* bdabank);
