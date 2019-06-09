@@ -27,9 +27,9 @@ os_shedule()
 }
 database_read(Intial_Detils* dbase)
 {
-	char line[81], rbbalancea[7], withdrowa[7];
-	long rdate=0,rbbalance=0,rwithdrw=0;
-	int e_flag=0,i,j=0,k=0;
+	char line[81], rbbalancea[7], withdrowa[7], read_a[7];
+	long rdate=0,rbbalance=0,rwithdrw=0, read_n=0;
+	int e_flag=0,i,j=0,k=0,l=0;
 //	fp = fopen("D:\\RT_NightProtect\\database.txt", "a+");
 	if (fp != NULL)
 	{
@@ -84,9 +84,19 @@ database_read(Intial_Detils* dbase)
 				//printf("Last withdrow balance=%li\n", rwithdrw);
 				k++;
 			}
+			i++;
+			for (i;line[i] != 'E';i++)
+			{
+
+				read_a[l] = line[i];
+				read_n = atol(read_a);
+				//printf("Last withdrow balance=%li\n", rwithdrw);
+				l++;
+			}
 			dbase->date = rdate;
 			dbase->current_bank_amount = rbbalance;
 			dbase->widrow_bank_amount = rwithdrw;
+			dbase->total = read_n;
 			//printf("LAST UPDATED DATE:")
 			printf("CURRENT BANK BALANCE=%li\n", dbase->current_bank_amount);
 			printf("LAST WTHDROWAL BALANCE=%li\n", dbase->widrow_bank_amount);
@@ -131,7 +141,7 @@ date(Intial_Detils* Day1)
 Date_verify(int* Ddate_v)
 	{
 
-		printf("----Date entered=%d\n", *Ddate_v);
+		//printf("----Date entered=%d\n", *Ddate_v);
 		int ab = *Ddate_v;
 		da = ab / 1000000;
 		mon = ab / 10000;
@@ -213,7 +223,7 @@ D_Detils(Intial_Detils* Day1)
 }
 float sum_vages(Intial_Detils* Daytoday)
 {
-	
+	Daytoday->total = 0;
 	for (int i = 1;(i <=(Daytoday->number));i++)
 	{
 	printf("----Enter the %d purchase amount---\n", i);
@@ -242,6 +252,8 @@ updated_balance(Intial_Detils* dbase)
 	fprintf(fp, "%c", 'E');
 	fprintf(fp, "%li", (dbase->widrow_bank_amount));
 	fprintf(fp, "%c", 'E');
+	fprintf(fp, "%li", (dbase->total));
+	fprintf(fp, "%c", 'E');
 	fclose(fp);
 
 }
@@ -266,8 +278,17 @@ bank_Dupdate(Intial_Detils* babank)
 	scanf_s("%li", &(bdupdate));
 
 	babank->current_bank_amount = (babank->current_bank_amount) - bdupdate;
-	printf("----BANK AMOUNT TILL DATE  %d_%d_%d  IS %li\n", da, mon, yr, babank->current_bank_amount);
+//	printf("----BANK AMOUNT TILL DATE  %d_%d_%d  IS %li\n", da, mon, yr, babank->current_bank_amount);
 
 
 }
-
+d_details(Intial_Detils* dd_details)
+{
+	Date_verify(&dd_details->date);
+	printf("   _________________________________________________\n");
+	printf("LAST UPDATED DATE:%d_%d_%d\n", da, mon, yr);
+	printf("CURRENT BANK BALANCE=%li\n", dd_details->current_bank_amount);
+	printf("LAST WTHDROWAL BALANCE=%li\n", dd_details->widrow_bank_amount);
+	printf("TOTAL PURCHACE AMOUNT=%li\n", dd_details->total);
+	printf("   _________________________________________________\n");
+}

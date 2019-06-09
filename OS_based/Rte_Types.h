@@ -31,3 +31,4 @@ extern bank_Details(Intial_Detils* bank);
 extern compare_amount(long float* current_bank_amount1);
 bank_update(Intial_Detils* babank);
 bank_Dupdate(Intial_Detils* bdabank);
+extern d_details(Intial_Detils* dd_details);

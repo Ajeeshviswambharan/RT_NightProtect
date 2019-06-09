@@ -28,7 +28,7 @@ void main()
 	printf("_______________________DAILY WAGES_________________\n");
 	fp = fopen("D:\\RT_NightProtect\\database.txt", "a+");
 	database_read(&daily1);
-	printf("PLEASE ENTER YOUR CHIICE \n");
+	printf("PLEASE ENTER YOUR CHOICE \n");
 	printf("   _________________________________________________\n");
 	printf(" PRESS\n");
 	printf(" 1-FOR UPDATING BANK WITHDROWAL AND DAILY BILLS\n");
@@ -79,7 +79,8 @@ void main()
 		updated_balance(&daily1);
 		break;
 	case 5:
-		printf(" LAST DAY BALANCE DETAILS\n");
+		printf(" LAST DAY DETAILS\n");
+		d_details(&daily1);
 		break;
 	default:
 		printf(" INVALID ENTRY\n");
