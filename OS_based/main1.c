@@ -232,7 +232,7 @@ float sum_vages(Intial_Detils* Daytoday)
 	}
 	Daytoday->widrow_bank_amount = (Daytoday->widrow_bank_amount) - (Daytoday->total);
 	printf("----TOTAL EXPENSE FOR THE  %d_%d_%d DATE =%li\n", da, mon, yr, Daytoday->total);
-	return Daytoday->total;
+	//return Daytoday->total;
 }
 
 
