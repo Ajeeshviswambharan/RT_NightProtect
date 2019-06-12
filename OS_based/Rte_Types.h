@@ -17,6 +17,7 @@ typedef struct
 	long  current_bank_amount;
 	long widrow_bank_amount;
 	long final_b;
+	int month;
 
 }Intial_Detils;
 extern database_read(Intial_Detils* dbase);
@@ -32,3 +33,4 @@ extern compare_amount(long float* current_bank_amount1);
 bank_update(Intial_Detils* babank);
 bank_Dupdate(Intial_Detils* bdabank);
 extern d_details(Intial_Detils* dd_details);
+extern database_read_lastmonth(Intial_Detils* last_month);

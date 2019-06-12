@@ -36,6 +36,7 @@ void main()
 	printf(" 3-FOR UPDATING BANK AMOUNT AND WIDROW AMOUNT \n");
 	printf(" 4-FOR UPDATING CREDIT CARD WITHDROWAL\n");
 	printf(" 5-FOR DISPLAY BANK BALANCE AND WITHDROW BALANCE\n");
+	printf(" 6-FOR DISPLAY LAST MONTH TRANSACTION \n");
 	printf("   _________________________________________________\n");
 	scanf("%d", &choice_get);
 	switch (choice_get)
@@ -83,6 +84,11 @@ void main()
 	case 5:
 		printf(" LAST DAY DETAILS\n");
 		d_details(&daily1);
+		break;
+	case 6:
+		printf(" LAST MONTH TRNSACTION DETAILS\n");
+		printf(" PLEAASE ENTER THE MONTH IN MM FORMAT\n");
+		database_read_lastmonth(&daily1);
 		break;
 	default:
 		printf(" INVALID ENTRY\n");

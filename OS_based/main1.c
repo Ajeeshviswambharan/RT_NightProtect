@@ -292,3 +292,66 @@ d_details(Intial_Detils* dd_details)
 	printf("TOTAL PURCHACE AMOUNT=%li\n", dd_details->total);
 	printf("   _________________________________________________\n");
 }
+
+database_read_lastmonth(Intial_Detils* last_month)
+{
+char line[81], rbbalancea[81], withdrowa[7], read_a[7];
+long rdate = 0, rbbalance = 0, rwithdrw = 0, read_n = 0;
+int e_flag = 0, i=0, j = 0, k = 0, l = 0,n=0,temp=0;
+scanf("%d", &last_month->month);
+fp = fopen("D:\\RT_NightProtect\\database.txt", "r");
+if (fp != NULL)
+{
+	while (!feof(fp))
+	{
+		fgets(line, 81, fp);
+		//printf("Last date=%s", line);
+
+		do {
+			i++;
+			if (line[i] == 'E')
+			{
+				rdate = atol(line);
+				e_flag = i;
+				//printf("linefvalue=%s\n", line);
+				//printf("Last date=%li\n", rdate);
+
+			}
+		} while (line[i] != 'E');
+		temp = rdate % 1000000;
+		temp = temp / 10000;
+		//printf("MONTH ENTERED=%d\n", last_month->month);
+		//printf("MONTH FROM DATABASE=%d\n", temp);
+		if (temp == last_month->month)
+		{
+			do {
+				i++;
+				if (line[i] == 'E')
+				{
+					e_flag++;
+					for (int m = 0;m != i;m++)
+					{
+						rbbalancea[m] = line[e_flag + m];
+					}
+					rbbalance = atol(rbbalancea);
+					printf("Last bank balance=%li\n", rbbalance);
+				}
+			} while (line[i] != 'E');
+
+		}
+		else
+			printf("NO RECORD IN THIS MONTH\n");
+
+
+
+
+		i = 0;
+	}
+
+}
+else
+//(dbase->current_bank_amount) = (double)line;
+exit(0);
+fclose(fp);
+}
+
