@@ -297,9 +297,14 @@ database_read_lastmonth(Intial_Detils* last_month)
 {
 char line[81], rbbalancea[81], withdrowa[81], read_a[81];
 long rdate = 0, rbbalance = 0, rwithdrw = 0, read_n = 0;
-int e_flag = 0, i=0, j = 0, k = 0, l = 0,n=0,temp=0, e_flag_1=0;
+int e_flag = 0, i = 0, j = 0, k = 0, l = 0, n = 0, temp = 0, e_flag_1 = 0, flg_first = 0, flg_last = 0, temp11 = 0, tempd = 0;
 char *month_name;
 scanf("%d", &last_month->month);
+last_month->month_entered = (month_details)(last_month->month);
+
+month_name = monthname(last_month->month_entered);
+printf("------%s DETAILS-------\n", month_name);
+printf("________________________________________\n");
 fp = fopen("D:\\RT_NightProtect\\database.txt", "r");
 if (fp != NULL)
 {
@@ -319,17 +324,16 @@ if (fp != NULL)
 
 			}
 		} while (line[i] != 'E');
+//		tempd = rdate / 1000000;
 		temp = rdate % 1000000;
-		temp = temp / 10000;
+		temp11 = temp / 10000;
 		//printf("MONTH ENTERED=%d\n", last_month->month);
 		//printf("MONTH FROM DATABASE=%d\n", temp);
-		last_month->month_entered = (month_details)(last_month->month);
-
-		month_name = monthname(last_month->month_entered);
-		printf("------%s DETAILS-------\n", month_name);
-		if (temp == last_month->month)
+		if (temp11 == last_month->month)
 		{
-			
+			tempd = rdate / 1000000;
+			flg_first++;
+			flg_last = 1;
 			do {
 				i++;
 				if (line[i] == 'E')
@@ -340,7 +344,7 @@ if (fp != NULL)
 						rbbalancea[m] = line[e_flag + m];
 					}
 					rbbalance = atol(rbbalancea);
-					printf("Last bank balance=%li\n", rbbalance);
+					//printf("Last bank balance=%li\n", rbbalance);
 					e_flag_1 = i;
 				}
 			} while (line[i] != 'E');
@@ -355,7 +359,7 @@ if (fp != NULL)
 						withdrowa[s] = line[e_flag_1 + s];
 					}
 					rwithdrw = atol(withdrowa);
-					printf("Last WITHDROW AMOUNT=%li\n", rwithdrw);
+					//printf("Last WITHDROW AMOUNT=%li\n", rwithdrw);
 					e_flag_1 = i;
 				}
 			} while (line[i] != 'E');
@@ -370,21 +374,38 @@ if (fp != NULL)
 						read_a[s] = line[e_flag_1 + s];
 					}
 					read_n = atol(read_a);
-					printf("Last purchase amount=%li\n", read_n);
+					//printf("Last purchase amount=%li\n", read_n);
 				}
 			} while (line[i] != 'E');
-
+			if (flg_first == 1)
+			{
+				printf("FIRST DATE OF PURCHACE -%d_%s_2019\n", tempd, month_name);
+				printf("BANK BALANCE		 -%li\n", rbbalance);
+				printf("WITHDROW AMOUNT		 -%li\n", rwithdrw);
+				printf("PURCHASE AMOUNT		 -%li\n", read_n);
+				printf("________________________________________\n");
+			}
 			e_flag = 0;
 			e_flag_1 = 0;
 		}
 		else
 			printf("NO RECORD IN THIS MONTH\n");
 
-
-
-
 		i = 0;
 	}
+	if (flg_last == 1)
+	{
+		printf("LAST DATE OF PURCHACE -%d_%s_2019\n", tempd, month_name);
+		printf("LAST DAY BANK BALANCE		 -%li\n", rbbalance);
+		printf("LAST DAY WITHDROW AMOUNT		 -%li\n", rwithdrw);
+		printf("LAST DAY PURCHASE AMOUNT		 -%li\n", read_n);
+		printf("________________________________________\n");
+	}
+	else
+	{
+
+	}
+
 
 }
 else
