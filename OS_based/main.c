@@ -35,7 +35,7 @@ void main()
 	printf(" 2-FOR UPDATING DAILY BILLS\n");
 	printf(" 3-FOR UPDATING BANK AMOUNT AND WIDROW AMOUNT \n");
 	printf(" 4-FOR UPDATING CREDIT CARD WITHDROWAL\n");
-	printf(" 5-FOR DISPLAY BANK BALANCE AND WITHDROW BALANCE\n");
+	printf(" 5-FOR DISPLAY LAST DAY TRANSACTION\n");
 	printf(" 6-FOR DISPLAY LAST MONTH TRANSACTION \n");
 	printf("   _________________________________________________\n");
 	scanf("%d", &choice_get);

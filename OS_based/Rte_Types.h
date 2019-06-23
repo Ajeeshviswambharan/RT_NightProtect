@@ -37,6 +37,7 @@ typedef struct
 	long final_b;
 	int month;
 	long bdupdate;
+	long totalexmonth;
 	month_details month_entered;
 
 }Intial_Detils;

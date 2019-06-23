@@ -376,6 +376,7 @@ if (fp != NULL)
 						read_a[s] = line[e_flag_1 + s];
 					}
 					read_n = atol(read_a);
+					last_month->totalexmonth = (last_month->totalexmonth) + read_n;
 					e_flag_1 = i;
 					//printf("Last purchase amount=%li\n", read_n);
 				}
@@ -390,7 +391,8 @@ if (fp != NULL)
 							read_c[s] = line[e_flag_1 + s];
 						}
 						read_c1 = atol(read_c);
-						printf("Last credit purchase amount=%li\n", read_c1);
+						last_month->totalexmonth = (last_month->totalexmonth) +read_c1;
+						//printf("Last credit purchase amount=%li\n", read_c1);
 					}
 			} while (line[i] != 'E');
 
@@ -405,22 +407,24 @@ if (fp != NULL)
 			e_flag = 0;
 			e_flag_1 = 0;
 		}
-		else
-			printf("NO RECORD IN THIS MONTH\n");
+		
 
 		i = 0;
 	}
 	if (flg_last == 1)
 	{
 		printf("LAST DATE OF PURCHACE -%d_%s_2019\n", tempd, month_name);
-		printf("LAST DAY BANK BALANCE		 -%li\n", rbbalance);
-		printf("LAST DAY WITHDROW AMOUNT		 -%li\n", rwithdrw);
-		printf("LAST DAY PURCHASE AMOUNT		 -%li\n", read_n);
+		printf("LAST DAY BANK BALANCE		-%li\n", rbbalance);
+		printf("LAST DAY WITHDROW AMOUNT	-%li\n", rwithdrw);
+		printf("LAST DAY PURCHASE AMOUNT	-%li\n", read_n);
+		printf("________________________________________\n");
+		printf("TOTAL EXPENSE FOR  %s IS %li\n", month_name, (last_month->totalexmonth));
 		printf("________________________________________\n");
 	}
-	else
-	{
 
+	else if (flg_last == 0)
+	{
+	printf("NO RECORD IN THIS MONTH\n");
 	}
 
 
