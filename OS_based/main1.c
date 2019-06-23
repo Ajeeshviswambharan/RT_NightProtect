@@ -297,8 +297,8 @@ d_details(Intial_Detils* dd_details)
 
 database_read_lastmonth(Intial_Detils* last_month)
 {
-char line[81], rbbalancea[81], withdrowa[81], read_a[81];
-long rdate = 0, rbbalance = 0, rwithdrw = 0, read_n = 0;
+char line[81], rbbalancea[81], withdrowa[81], read_a[81], read_c[81];
+long rdate = 0, rbbalance = 0, rwithdrw = 0, read_n = 0, read_c1 = 0;
 int e_flag = 0, i = 0, j = 0, k = 0, l = 0, n = 0, temp = 0, e_flag_1 = 0, flg_first = 0, flg_last = 0, temp11 = 0, tempd = 0;
 char *month_name;
 scanf("%d", &last_month->month);
@@ -376,9 +376,24 @@ if (fp != NULL)
 						read_a[s] = line[e_flag_1 + s];
 					}
 					read_n = atol(read_a);
+					e_flag_1 = i;
 					//printf("Last purchase amount=%li\n", read_n);
 				}
 			} while (line[i] != 'E');
+			do {
+					i++;
+					if (line[i] == 'E')
+					{
+						e_flag_1++;
+						for (int s = 0;s != i;s++)
+						{
+							read_c[s] = line[e_flag_1 + s];
+						}
+						read_c1 = atol(read_c);
+						printf("Last credit purchase amount=%li\n", read_c1);
+					}
+			} while (line[i] != 'E');
+
 			if (flg_first == 1)
 			{
 				printf("FIRST DATE OF PURCHACE -%d_%s_2019\n", tempd, month_name);
