@@ -254,6 +254,8 @@ updated_balance(Intial_Detils* dbase)
 	fprintf(fp, "%c", 'E');
 	fprintf(fp, "%li", (dbase->total));
 	fprintf(fp, "%c", 'E');
+	fprintf(fp, "%li", (dbase->bdupdate));
+	fprintf(fp, "%c", 'E');
 	fclose(fp);
 
 }

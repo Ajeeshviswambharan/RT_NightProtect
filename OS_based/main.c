@@ -44,7 +44,7 @@ void main()
 	case 1:
 		printf(" PLEASE UPDATE WITHDROWAL AMOUNT AND DAILY BILLS\n");
 		
-		
+		daily1.bdupdate = 0;
 		date(&daily1);
 		if (terminate)
 			break;
@@ -55,6 +55,7 @@ void main()
 		break;
 	case 2:
 		printf(" PLEASE UPDAYE DAILY BILLS\n");
+		daily1.bdupdate = 0;
 		date(&daily1);
 		if (terminate)
 			break;
@@ -64,6 +65,7 @@ void main()
 		break;
 	case 3:
 		printf(" PLEASE UPDATE THE NEW AMOUNT CREDITED AND WIDROW AMOUNT \n");
+		daily1.bdupdate = 0;
 		daily1.total = 0;
 		date(&daily1);
 		if (terminate)
@@ -74,6 +76,7 @@ void main()
 		break;
 	case 4:
 		printf(" PLEASE UPDATE THE CREDIT CARD WITHDROWAL AMOUNT \n");
+		daily1.bdupdate = 0;
 		daily1.total = 0;
 		date(&daily1);
 		if (terminate)
