@@ -36,6 +36,7 @@ typedef struct
 	long widrow_bank_amount;
 	long final_b;
 	int month;
+	long bdupdate;
 	month_details month_entered;
 
 }Intial_Detils;

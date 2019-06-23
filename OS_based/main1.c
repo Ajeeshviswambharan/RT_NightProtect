@@ -273,11 +273,11 @@ bank_update(Intial_Detils* babank)
 bank_Dupdate(Intial_Detils* babank)
 
 {
-	long bdupdate;
+	//long bdupdate;
 	printf("----ENTER THE DEBIT AMOUNT----\n");
-	scanf_s("%li", &(bdupdate));
+	scanf_s("%li", &(babank->bdupdate));
 
-	babank->current_bank_amount = (babank->current_bank_amount) - bdupdate;
+	babank->current_bank_amount = (babank->current_bank_amount) - (babank->bdupdate);
 //	printf("----BANK AMOUNT TILL DATE  %d_%d_%d  IS %li\n", da, mon, yr, babank->current_bank_amount);
 
 
