@@ -7,6 +7,24 @@ extern float total_Vages;
 extern int da, mon, yr;
 //extern FILE *fp;
 
+typedef enum
+{
+	JANUARY = 1,
+	FEBRUARY = 2,
+	MARCH = 3,
+	APRIL = 4,
+	MAY = 5,
+	JUNE = 6,
+	JULY = 7,
+	AUGUEST = 8,
+	SEPTEMPER = 9,
+	OCTOBER = 10,
+	NOVEMBER = 11,
+	DECEMBER = 12
+
+}month_details;
+
+
 typedef struct 
 {
 	char answer;
@@ -18,6 +36,7 @@ typedef struct
 	long widrow_bank_amount;
 	long final_b;
 	int month;
+	month_details month_entered;
 
 }Intial_Detils;
 extern database_read(Intial_Detils* dbase);
@@ -34,3 +53,4 @@ bank_update(Intial_Detils* babank);
 bank_Dupdate(Intial_Detils* bdabank);
 extern d_details(Intial_Detils* dd_details);
 extern database_read_lastmonth(Intial_Detils* last_month);
+extern char* monthname(month_details mm);

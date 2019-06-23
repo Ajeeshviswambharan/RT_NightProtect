@@ -298,6 +298,7 @@ database_read_lastmonth(Intial_Detils* last_month)
 char line[81], rbbalancea[81], withdrowa[81], read_a[81];
 long rdate = 0, rbbalance = 0, rwithdrw = 0, read_n = 0;
 int e_flag = 0, i=0, j = 0, k = 0, l = 0,n=0,temp=0, e_flag_1=0;
+char *month_name;
 scanf("%d", &last_month->month);
 fp = fopen("D:\\RT_NightProtect\\database.txt", "r");
 if (fp != NULL)
@@ -322,8 +323,13 @@ if (fp != NULL)
 		temp = temp / 10000;
 		//printf("MONTH ENTERED=%d\n", last_month->month);
 		//printf("MONTH FROM DATABASE=%d\n", temp);
+		last_month->month_entered = (month_details)(last_month->month);
+
+		month_name = monthname(last_month->month_entered);
+		printf("------%s DETAILS-------\n", month_name);
 		if (temp == last_month->month)
 		{
+			
 			do {
 				i++;
 				if (line[i] == 'E')
@@ -387,3 +393,56 @@ exit(0);
 fclose(fp);
 }
 
+
+char* monthname(month_details mm)
+
+
+{
+	//int month_mm;
+	//month_mm = *mm;
+	switch (mm)
+	{
+	case JANUARY:
+		return "JANUARY";
+		break;
+	case FEBRUARY:
+		return "FEBRUARY";
+		break;
+	case MARCH:
+		return "MARCH";
+		break;
+	case APRIL:
+		return "APRIL";
+		break;
+	case MAY:
+		return "MAY";
+		break;
+	case JUNE:
+		return "JUNE";
+		break;
+	case JULY:
+		return "JULY";
+		break;
+	case AUGUEST:
+		return "AUGUEST";
+		break;
+	case SEPTEMPER:
+		return "SEPTEMPER";
+		break;
+	case OCTOBER:
+		return "OCTOBER";
+		break;
+	case NOVEMBER:
+		return "NOVEMBER";
+		break;
+	case DECEMBER:
+		return "DECEMBER";
+		break;
+	default:
+		return "INVALID MONTH";
+		break;
+
+	}
+
+
+}
