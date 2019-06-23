@@ -1,7 +1,4 @@
 #define _CRT_SECURE_NO_WARNINGS 
-
-
-
 #include"main.h"
 #include"Rte_Types.h"
 #include<stdio.h>
@@ -15,8 +12,6 @@ long bankbalace;
 int choice_get;
 
 Intial_Detils daily1;
-
-//float total_Vages;
 
 FILE *fp;
 void main()
